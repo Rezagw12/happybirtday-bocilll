@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selamat Ulang Tahun!</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffe0f0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+  .page {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 1s;
+  }
+  .page.active {
+    display: flex;
+    opacity: 1;
+  }
+  .page.fade-out {
+    opacity: 0;
+  }
+  h1 {
+    font-size: 2em;
+    color: #e91e63;
+    animation: fadeInUp 1s ease;
+  }
+  p {
+    font-size: 1.2em;
+    color: #333;
+    animation: fadeInUp 1s ease;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: fadeInUp 1s ease;
+  }
+  img {
+    max-width: 300px;
+    border-radius: 10px;
+    animation: fadeIn 1s ease;
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px);}
+    100% { opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+</head>
+<body>
+
+<audio id="bg-music" src="music.mp3" autoplay loop></audio>
+
+<div class="page active" id="page1">
+  <div>
+    <h1>Halo! 🎉</h1>
+    <p>Siap untuk ucapan ulang tahun spesial?</p>
+    <button onclick="nextPage()">Mulai</button>
+  </div>
+</div>
+
+<div class="page" id="page2"><div><h1>Selamat Ulang Tahun!</h1><p>Semoga harimu penuh kebahagiaan!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page" id="page3"><div><h1>🎂</h1><p>Semoga semakin sukses dan sehat selalu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page" id="page4"><div><h1>🌟</h1><p>Semoga semua impianmu tercapai!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page" id="page5"><div><h1>💖</h1><p>Teruslah menjadi pribadi yang hebat!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page" id="page6"><div><h1>🎉</h1><p>Terima kasih sudah menjadi bagian dari hidup kami!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page" id="page7"><div><h1>🌈</h1><p>Semoga setiap hari membawa warna baru yang cerah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page" id="page8"><div><h1>😊</h1><p>Jangan pernah menyerah pada mimpi-mimpimu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page" id="page9"><div><h1>✨</h1><p>Jadilah sinar bagi orang-orang di sekitarmu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+
+<div class="page" id="page10">
+  <div>
+    <h1>🎈</h1>
+    <p>Dan ini adalah kenangan manis kita!</p>
+    <img src="bocil.jpg" alt="Kenangan">
+    <button onclick="nextPage()">Lanjutkan</button>
+  </div>
+</div>
+
+<div class="page" id="page11"><div><h1>🎊</h1><p>Semoga ulang tahunmu penuh kejutan yang indah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+
+<div class="page" id="page12"><div><h1>❤️</h1><p>Selamat ulang tahun! Nikmati harimu dengan penuh cinta dan tawa!</p></div></div>
+
+<script>
+  let currentPage = 1;
+  const totalPages = 12;
+
+  function nextPage() {
+    const current = document.getElementById('page' + currentPage);
+    current.classList.add('fade-out');
+    setTimeout(() => {
+      current.classList.remove('active', 'fade-out');
+      currentPage++;
+      if(currentPage <= totalPages){
+        document.getElementById('page' + currentPage).classList.add('active');
+      }
+    }, 1000);
+  }
+
+  // Play music on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bg-music');
+    music.play().catch(() => {
+      // Jika browser mencegah autoplay, tunggu interaksi
+      document.body.addEventListener('click', () => music.play(), { once: true });
+    });
+  });
+</script>
+
+</body>
+</html>
