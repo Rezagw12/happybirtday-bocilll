@@ -21,24 +21,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: opacity 1s;
   }
   .page.active {
     display: flex;
-    opacity: 1;
+    animation: fadeIn 1s ease;
   }
-  .page.fade-out {
-    opacity: 0;
-  }
-  h1 {
-    font-size: 2em;
-    color: #e91e63;
-    animation: fadeInUp 1s ease;
-  }
-  p {
-    font-size: 1.2em;
-    color: #333;
-    animation: fadeInUp 1s ease;
+  h1, p {
+    margin: 0.5em 0;
   }
   button {
     margin-top: 20px;
@@ -49,20 +38,35 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    animation: fadeInUp 1s ease;
   }
   img {
     max-width: 300px;
     border-radius: 10px;
-    animation: fadeIn 1s ease;
+    animation: fadeIn 2s ease;
   }
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(20px);}
-    100% { opacity: 1; transform: translateY(0);}
+  /* Animasinya berbeda-beda */
+  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+  @keyframes slideIn { from {transform: translateY(100px); opacity:0;} to {transform: translateY(0); opacity:1;} }
+  @keyframes rotateIn { from {transform: rotate(-180deg); opacity:0;} to {transform: rotate(0); opacity:1;} }
+  @keyframes zoomIn { from {transform: scale(0.5); opacity:0;} to {transform: scale(1); opacity:1;} }
+  @keyframes bounceIn { 0% {transform: scale(0.3); opacity:0;} 50% {transform: scale(1.1);} 70% {transform: scale(0.9);} 100% {transform: scale(1); opacity:1;} }
+
+  .fadeIn { animation: fadeIn 1s ease; }
+  .slideIn { animation: slideIn 1s ease; }
+  .rotateIn { animation: rotateIn 1s ease; }
+  .zoomIn { animation: zoomIn 1s ease; }
+  .bounceIn { animation: bounceIn 1s ease; }
+
+  /* Animasi SEMANGAT! */
+  .semangat {
+    display: inline-block;
+    font-weight: bold;
+    color: #d50000;
+    animation: semangatAnim 1s infinite alternate;
   }
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  @keyframes semangatAnim {
+    from { transform: scale(1); }
+    to { transform: scale(1.3); }
   }
 </style>
 </head>
@@ -70,33 +74,24 @@
 
 <audio id="bg-music" src="music.mp3" autoplay loop></audio>
 
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  const music = document.getElementById('bg-music');
-  music.play().catch(() => {
-    document.body.addEventListener('click', () => music.play(), { once: true });
-  });
-});
-</script>
-
-<div class="page active" id="page1">
+<div class="page active fadeIn" id="page1">
   <div>
-    <h1> BOCILLLLL </h1>
-    <p> Maap yahh Kelamaan Bikin nyaa wkwkw </p>
+    <h1>Halo! 🎉</h1>
+    <p>Siap untuk ucapan ulang tahun spesial?</p>
     <button onclick="nextPage()">Mulai</button>
   </div>
 </div>
 
-<div class="page" id="page2"><div><h1>Selamat Ulang Tahun!</h1><p>Semoga harimu penuh kebahagiaan!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page" id="page3"><div><h1>🎂</h1><p>Semoga semakin sukses dan sehat selalu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page" id="page4"><div><h1>🌟</h1><p>Semoga semua impianmu tercapai!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page" id="page5"><div><h1>💖</h1><p>Teruslah menjadi pribadi yang hebat!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page" id="page6"><div><h1>🎉</h1><p>Terima kasih sudah menjadi bagian dari hidup kami!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page" id="page7"><div><h1>🌈</h1><p>Semoga setiap hari membawa warna baru yang cerah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page" id="page8"><div><h1>😊</h1><p>Jangan pernah menyerah pada mimpi-mimpimu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page" id="page9"><div><h1>✨</h1><p>Jadilah sinar bagi orang-orang di sekitarmu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page slideIn" id="page2"><div><h1>Selamat Ulang Tahun!</h1><p>Semoga harimu penuh kebahagiaan!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page rotateIn" id="page3"><div><h1>🎂</h1><p>Semoga semakin sukses dan sehat selalu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page zoomIn" id="page4"><div><h1>🌟</h1><p>Semoga semua impianmu tercapai!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page bounceIn" id="page5"><div><h1>💖</h1><p>Teruslah menjadi pribadi yang hebat!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page fadeIn" id="page6"><div><h1>🎉</h1><p>Terima kasih sudah menjadi bagian dari hidup kami!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page slideIn" id="page7"><div><h1>🌈</h1><p>Semoga setiap hari membawa warna baru yang cerah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page rotateIn" id="page8"><div><h1>😊</h1><p>Jangan pernah menyerah pada mimpi-mimpimu! <span class="semangat">SEMANGAT!</span></p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page zoomIn" id="page9"><div><h1>✨</h1><p>Jadilah sinar bagi orang-orang di sekitarmu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
 
-<div class="page" id="page10">
+<div class="page bounceIn" id="page10">
   <div>
     <h1>🎈</h1>
     <p>Dan ini adalah kenangan manis kita!</p>
@@ -105,9 +100,9 @@ window.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-<div class="page" id="page11"><div><h1>🎊</h1><p>Semoga ulang tahunmu penuh kejutan yang indah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page slideIn" id="page11"><div><h1>🎊</h1><p>Semoga ulang tahunmu penuh kejutan yang indah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
 
-<div class="page" id="page12"><div><h1>❤️</h1><p>Selamat ulang tahun! Nikmati harimu dengan penuh cinta dan tawa!</p></div></div>
+<div class="page fadeIn" id="page12"><div><h1>❤️</h1><p>Selamat ulang tahun! Nikmati harimu dengan penuh cinta dan tawa!</p></div></div>
 
 <script>
   let currentPage = 1;
@@ -115,21 +110,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function nextPage() {
     const current = document.getElementById('page' + currentPage);
-    current.classList.add('fade-out');
-    setTimeout(() => {
-      current.classList.remove('active', 'fade-out');
-      currentPage++;
-      if(currentPage <= totalPages){
-        document.getElementById('page' + currentPage).classList.add('active');
-      }
-    }, 1000);
+    current.classList.remove('active');
+    currentPage++;
+    if(currentPage <= totalPages){
+      const next = document.getElementById('page' + currentPage);
+      next.classList.add('active');
+    }
   }
 
   // Play music on page load
   window.addEventListener('DOMContentLoaded', () => {
     const music = document.getElementById('bg-music');
     music.play().catch(() => {
-      // Jika browser mencegah autoplay, tunggu interaksi
       document.body.addEventListener('click', () => music.play(), { once: true });
     });
   });
