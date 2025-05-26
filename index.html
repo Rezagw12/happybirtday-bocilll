@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     background: #ffe0f0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     overflow: hidden;
   }
   .page {
@@ -21,10 +21,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: #333;
   }
   .page.active {
     display: flex;
-    animation: fadeIn 1s ease;
   }
   h1, p {
     margin: 0.5em 0;
@@ -38,35 +38,40 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
   img {
     max-width: 300px;
     border-radius: 10px;
-    animation: fadeIn 2s ease;
   }
-  /* Animasinya berbeda-beda */
-  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-  @keyframes slideIn { from {transform: translateY(100px); opacity:0;} to {transform: translateY(0); opacity:1;} }
-  @keyframes rotateIn { from {transform: rotate(-180deg); opacity:0;} to {transform: rotate(0); opacity:1;} }
-  @keyframes zoomIn { from {transform: scale(0.5); opacity:0;} to {transform: scale(1); opacity:1;} }
-  @keyframes bounceIn { 0% {transform: scale(0.3); opacity:0;} 50% {transform: scale(1.1);} 70% {transform: scale(0.9);} 100% {transform: scale(1); opacity:1;} }
 
-  .fadeIn { animation: fadeIn 1s ease; }
-  .slideIn { animation: slideIn 1s ease; }
+  /* Animasinya */
+  @keyframes slideRight { from {transform: translateX(-100%); opacity:0;} to {transform: translateX(0); opacity:1;} }
+  @keyframes slideLeft { from {transform: translateX(100%); opacity:0;} to {transform: translateX(0); opacity:1;} }
+  @keyframes slideUp { from {transform: translateY(100%); opacity:0;} to {transform: translateY(0); opacity:1;} }
+  @keyframes zoomBounce { 0%{transform: scale(0.2); opacity:0;} 50%{transform: scale(1.2);} 70%{transform: scale(0.9);} 100%{transform: scale(1); opacity:1;} }
+  @keyframes rotateIn { from {transform: rotate(-720deg); opacity:0;} to {transform: rotate(0); opacity:1;} }
+  @keyframes flipIn { from {transform: rotateY(180deg); opacity:0;} to {transform: rotateY(0); opacity:1;} }
+  @keyframes fadeGlow { 0%,100%{ color:#e91e63; text-shadow: 0 0 10px #e91e63; } 50%{ color:#ffeb3b; text-shadow: 0 0 20px #ffeb3b; } }
+
+  .slideRight { animation: slideRight 1s ease; }
+  .slideLeft { animation: slideLeft 1s ease; }
+  .slideUp { animation: slideUp 1s ease; }
+  .zoomBounce { animation: zoomBounce 1s ease; }
   .rotateIn { animation: rotateIn 1s ease; }
-  .zoomIn { animation: zoomIn 1s ease; }
-  .bounceIn { animation: bounceIn 1s ease; }
+  .flipIn { animation: flipIn 1s ease; }
+  .fadeGlow { animation: fadeGlow 2s infinite alternate; }
 
-  /* Animasi SEMANGAT! */
+  /* SEMANGAT animasi */
   .semangat {
     display: inline-block;
     font-weight: bold;
     color: #d50000;
-    animation: semangatAnim 1s infinite alternate;
+    animation: semangatAnim 0.8s infinite alternate;
   }
   @keyframes semangatAnim {
-    from { transform: scale(1); }
-    to { transform: scale(1.3); }
+    from { transform: scale(1); text-shadow: 0 0 5px #d50000; }
+    to { transform: scale(1.5); text-shadow: 0 0 20px #d50000; }
   }
 </style>
 </head>
@@ -74,35 +79,35 @@
 
 <audio id="bg-music" src="music.mp3" autoplay loop></audio>
 
-<div class="page active fadeIn" id="page1">
+<div class="page slideRight active" id="page1">
   <div>
-    <h1>Halo! 🎉</h1>
-    <p>Siap untuk ucapan ulang tahun spesial?</p>
+    <h1>Bocilllll 🎉</h1>
+    <p> Maaf Yaa Baru sempet ngucapin </p>
     <button onclick="nextPage()">Mulai</button>
   </div>
 </div>
 
-<div class="page slideIn" id="page2"><div><h1>Selamat Ulang Tahun!</h1><p>Semoga harimu penuh kebahagiaan!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page rotateIn" id="page3"><div><h1>🎂</h1><p>Semoga semakin sukses dan sehat selalu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page zoomIn" id="page4"><div><h1>🌟</h1><p>Semoga semua impianmu tercapai!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page bounceIn" id="page5"><div><h1>💖</h1><p>Teruslah menjadi pribadi yang hebat!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page fadeIn" id="page6"><div><h1>🎉</h1><p>Terima kasih sudah menjadi bagian dari hidup kami!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page slideIn" id="page7"><div><h1>🌈</h1><p>Semoga setiap hari membawa warna baru yang cerah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page rotateIn" id="page8"><div><h1>😊</h1><p>Jangan pernah menyerah pada mimpi-mimpimu! <span class="semangat">SEMANGAT!</span></p><button onclick="nextPage()">Lanjutkan</button></div></div>
-<div class="page zoomIn" id="page9"><div><h1>✨</h1><p>Jadilah sinar bagi orang-orang di sekitarmu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page slideLeft" id="page2"><div><h1>Selamat Ulang Tahun bocilll tantrumm !</h1><p> This is Your Special Day </p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page slideUp" id="page3"><div><h1></h1><p>Semoga semakin sukses dan sehat selalu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page zoomBounce" id="page4"><div><h1>🌟</h1><p>Semoga semua impianmu tercapai!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page rotateIn" id="page5"><div><h1>💖</h1><p>Teruslah menjadi pribadi yang kuat!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page flipIn" id="page6"><div><h1>🎉</h1><p> Kamu Hebat sudah sampai sejauh ini </p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page slideRight" id="page7"><div><h1>🌈</h1><p>Apapun itu, I wanna say "you can do it"</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page zoomBounce" id="page8"><div><h1>😊</h1><p> and.. I know you have a lot of energy to do better <span class="semangat">SEMANGAT!</span></p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page rotateIn" id="page9"><div><h1>✨</h1><p>Jadilah sinar bagi orang-orang di sekitarmu!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
 
-<div class="page bounceIn" id="page10">
+<div class="page flipIn" id="page10">
   <div>
     <h1>🎈</h1>
-    <p>Dan ini adalah kenangan manis kita!</p>
-    <img src="bocil.jpg" alt="Kenangan">
+    <p> Maaf yaa Aku curi fotonya untuk page ini hehehe :v </p>
+    <img src="bocil.jpg" alt="">
     <button onclick="nextPage()">Lanjutkan</button>
   </div>
 </div>
 
-<div class="page slideIn" id="page11"><div><h1>🎊</h1><p>Semoga ulang tahunmu penuh kejutan yang indah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
+<div class="page fadeGlow" id="page11"><div><h1>🎊</h1><p>Semoga ulang tahunmu penuh kejutan yang indah!</p><button onclick="nextPage()">Lanjutkan</button></div></div>
 
-<div class="page fadeIn" id="page12"><div><h1>❤️</h1><p>Selamat ulang tahun! Nikmati harimu dengan penuh cinta dan tawa!</p></div></div>
+<div class="page zoomBounce" id="page12"><div><h1>❤️</h1><p>Selamat ulang tahun! Enjoy Your pleasuree </p></div></div>
 
 <script>
   let currentPage = 1;
