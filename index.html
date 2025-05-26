@@ -70,6 +70,15 @@
 
 <audio id="bg-music" src="music.mp3" autoplay loop></audio>
 
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const music = document.getElementById('bg-music');
+  music.play().catch(() => {
+    document.body.addEventListener('click', () => music.play(), { once: true });
+  });
+});
+</script>
+
 <div class="page active" id="page1">
   <div>
     <h1> BOCILLLLL </h1>
