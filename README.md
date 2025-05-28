@@ -1,12 +1,10 @@
-# Judul Proyek
+# Ucapan Ulang Tahun
 
-Deskripsi singkat tentang apa proyek ini dan apa fungsinya.
+kalian bisa ambil codding serta mengedit untuk memberikan kepada sesorang.
 
 ## Fitur
 - Fitur 1
-- Fitur 2
 
 ## Demo
 [Klik untuk melihat demo](https://rezagw12.github.io/happybirtday-bocilll)
 
-![Preview](https://github.com/username/repo-name/blob/main/preview.png?raw=true)
